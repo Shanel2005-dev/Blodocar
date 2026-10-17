@@ -67,9 +67,9 @@ function Footer() {
               <img
                 alt={brand.logoAlt}
                 className="h-10 w-auto"
-                height={341}
+                height={127}
                 src={brand.logoSrc}
-                width={1151}
+                width={259}
               />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-7 text-slate-300">

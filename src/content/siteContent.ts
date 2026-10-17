@@ -1,3 +1,5 @@
+const blodocarLogo = new URL('../assets/image/Capturess.PNG', import.meta.url).href
+
 export type SiteLink = {
   label: string
   href: string
@@ -139,7 +141,7 @@ export const siteContent: SiteContent = {
     name: 'BlodoCar',
     tagline: 'Startup béninoise du secteur automobile',
     homeHref: '/',
-    logoSrc: '/blodocar-logo.png',
+    logoSrc: blodocarLogo,
     logoAlt: 'BlodoCar',
   },
   header: {
