@@ -5,7 +5,6 @@ import {
   ClipboardCheck,
   FileText,
   Handshake,
-  Search,
   ShieldCheck,
   Wrench,
 } from 'lucide-react'
