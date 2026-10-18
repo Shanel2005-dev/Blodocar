@@ -42,14 +42,14 @@ function Header() {
             aria-label={
               isMenuOpen ? header.menuCloseLabel : header.menuOpenLabel
             }
-            className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white text-brand-night shadow-sm transition hover:border-brand-orange/40 hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange lg:hidden"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-brand-night bg-brand-night text-white shadow-md transition hover:border-brand-orange-strong hover:bg-brand-orange-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange lg:hidden"
             onClick={() => setIsMenuOpen((open) => !open)}
             type="button"
           >
             {isMenuOpen ? (
-              <X aria-hidden="true" size={24} />
+              <X aria-hidden="true" size={26} strokeWidth={2.5} />
             ) : (
-              <Menu aria-hidden="true" size={24} />
+              <Menu aria-hidden="true" size={26} strokeWidth={2.5} />
             )}
           </button>
 
