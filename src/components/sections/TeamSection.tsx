@@ -1,8 +1,5 @@
 import { ArrowUpRight, Share2 } from 'lucide-react'
-import {
-  isContentPlaceholder,
-  siteContent,
-} from '../../content/siteContent'
+import { siteContent } from '../../content/siteContent'
 import Reveal from '../ui/Reveal'
 import SectionHeading from '../ui/SectionHeading'
 
@@ -18,11 +15,7 @@ function TeamSection() {
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <SectionHeading
-            description={
-              isContentPlaceholder(team.introduction)
-                ? undefined
-                : team.introduction
-            }
+            description={team.introduction || undefined}
             id="team-title"
             label={team.label}
             title={team.title}
@@ -31,9 +24,8 @@ function TeamSection() {
         {team.members.length > 0 ? (
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {team.members.map((member) => {
-              const hasPhoto =
-                member.photo !== '' && !isContentPlaceholder(member.photo)
-              const hasLinkedIn = !isContentPlaceholder(member.linkedin.href)
+              const hasPhoto = member.photo !== ''
+              const hasLinkedIn = Boolean(member.linkedin.href)
 
               return (
                 <Reveal className="h-full" key={member.name}>
@@ -58,16 +50,18 @@ function TeamSection() {
                     <h3 className="mt-6 text-xl font-bold text-brand-night">
                       {member.name}
                     </h3>
-                    <p className="mt-1 text-sm font-semibold text-brand-orange-strong">
+                    <p className="mt-1 text-sm font-semibold text-brand-blue">
                       {member.role}
                     </p>
-                    <p className="mt-4 flex-1 leading-7 text-slate-600">
-                      {member.bio}
-                    </p>
+                    {member.bio && (
+                      <p className="mt-4 flex-1 leading-7 text-slate-600">
+                        {member.bio}
+                      </p>
+                    )}
                     {hasLinkedIn ? (
                       <a
                         aria-label={`${member.linkedin.label} — ${member.name}`}
-                        className="mt-6 inline-flex w-fit items-center gap-2 font-semibold text-brand-night underline decoration-slate-300 underline-offset-4 hover:text-brand-orange-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange-strong"
+                        className="mt-6 inline-flex w-fit items-center gap-2 font-semibold text-brand-night underline decoration-slate-300 underline-offset-4 hover:text-brand-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-blue"
                         href={member.linkedin.href}
                         rel="noreferrer"
                         target="_blank"
@@ -82,15 +76,7 @@ function TeamSection() {
               )
             })}
           </div>
-        ) : (
-          <Reveal>
-            <div className="mt-10 flex min-h-44 items-center rounded-2xl border border-dashed border-slate-300 bg-white px-7 py-8">
-              <p className="max-w-2xl leading-7 text-slate-600">
-                {team.emptyState}
-              </p>
-            </div>
-          </Reveal>
-        )}
+        ) : null}
       </div>
     </section>
   )

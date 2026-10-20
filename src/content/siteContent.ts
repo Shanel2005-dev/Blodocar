@@ -1,12 +1,18 @@
-const blodocarLogo = new URL('../assets/image/Capturess.PNG', import.meta.url).href
+const blodocarLogo = new URL('../assets/image/Capturess.PNG', import.meta.url)
+  .href
+const termsDocument = new URL(
+  "../assets/image/Conditions Générales d'Utilisation – BlodoCar.docx.pdf",
+  import.meta.url,
+).href
+const privacyDocument = new URL(
+  '../assets/image/Politique de Confidentialité – BlodoCar.docx.pdf',
+  import.meta.url,
+).href
 
 export type SiteLink = {
   label: string
   href: string
 }
-
-export const isContentPlaceholder = (value: string) =>
-  value.includes('[À compléter]')
 
 export type SiteContent = {
   metadata: {
@@ -36,7 +42,6 @@ export type SiteContent = {
   }
   hero: {
     eyebrow: string
-    prototypeNotice: string
     title: string
     subtitle: string
     image: {
@@ -52,22 +57,41 @@ export type SiteContent = {
     introduction: string
     mission: { title: string; text: string }
     vision: { title: string; text: string }
+    ecosystem: {
+      title: string
+      items: { title: string; description: string }[]
+    }
     values: {
       title: string
       items: { title: string; description: string }[]
     }
   }
+  journey: {
+    title: string
+    description: string
+    stages: { title: string; description: string }[]
+  }
   activities: {
     label: string
     title: string
     introduction: string
-    items: { title: string; description: string; points?: string[] }[]
+    items: {
+      title: string
+      description: string
+      points?: string[]
+      action: SiteLink
+    }[]
   }
   platform: {
     label: string
     title: string
     description: string
-    pendingLabel: string
+    applications: {
+      name: string
+      audience: string
+      description: string
+    }[]
+    scoreSummary: string
     links: SiteLink[]
   }
   objectives: {
@@ -75,13 +99,13 @@ export type SiteContent = {
     title: string
     introduction: string
     items: string[]
+    ambition: string
     metrics: { label: string; value: string }[]
   }
   team: {
     label: string
     title: string
     introduction: string
-    emptyState: string
     members: {
       name: string
       role: string
@@ -96,18 +120,11 @@ export type SiteContent = {
     label: string
     title: string
     introduction: string
-    pendingLabel: string
     email: SiteLink & { value: string }
     phone: SiteLink & { value: string }
-    whatsapp: SiteLink & { value: string }
     zoneLabel: string
     zoneOfIntervention: string
-    addressLabel: string
-    address: string
-    hoursLabel: string
-    hours: string
     socialLinks: SiteLink[]
-    socialEmptyState: string
   }
   footer: {
     calloutEyebrow: string
@@ -120,26 +137,28 @@ export type SiteContent = {
     backToTop: string
     legalSummary: string
     legalTitle: string
+    legalNotice: string
     legalFields: { label: string; value: string }[]
+    legalDocuments: SiteLink[]
     copyright: string
   }
 }
 
 export const siteContent: SiteContent = {
   metadata: {
-    title: "BlodoCar | Diagnostic de véhicules d'occasion à Cotonou",
+    title: 'BlodoCar | La confiance automobile en Afrique de l’Ouest',
     description:
-      "BlodoCar vous accompagne pour acheter ou vendre un véhicule d'occasion à Cotonou : diagnostic par un réparateur certifié, B-Score et rapport détaillé, même à distance.",
-    openGraphTitle: "BlodoCar | Diagnostic de véhicules d'occasion à Cotonou",
+      'De l’achat à la revente, BlodoCar vous aide à mieux connaître, acheter, entretenir, réparer et valoriser votre véhicule.',
+    openGraphTitle: 'BlodoCar | La confiance automobile en Afrique de l’Ouest',
     openGraphDescription:
-      "BlodoCar vous accompagne pour acheter ou vendre un véhicule d'occasion à Cotonou : diagnostic par un réparateur certifié, B-Score et rapport détaillé, même à distance.",
+      'De l’achat à la revente, BlodoCar vous aide à mieux connaître, acheter, entretenir, réparer et valoriser votre véhicule.',
     openGraphImage: '/og-image.png',
-    openGraphImageAlt: 'Visuel provisoire de BlodoCar',
+    openGraphImageAlt: 'Visuel BlodoCar en bleu nuit et orange',
     locale: 'fr_BJ',
   },
   brand: {
     name: 'BlodoCar',
-    tagline: 'Startup béninoise du secteur automobile',
+    tagline: 'Roulez en toute sérénité.',
     homeHref: '/',
     logoSrc: blodocarLogo,
     logoAlt: 'BlodoCar',
@@ -161,191 +180,265 @@ export const siteContent: SiteContent = {
     ],
   },
   hero: {
-    eyebrow: 'Startup béninoise · Automobile',
-    prototypeNotice: 'Prototype : contenus provisoires',
-    title: "Achetez votre véhicule d'occasion en toute confiance",
+    eyebrow: 'Née au Bénin · Pensée pour la sous-région',
+    title: 'Roulez en toute sérénité.',
     subtitle:
-      'BlodoCar est vos yeux sur place à Cotonou : un réparateur certifié diagnostique le véhicule et vous recevez le rapport à distance.',
+      'BlodoCar vous accompagne à chaque étape de la vie de votre véhicule. Née au Bénin, la solution a vocation à s’étendre à la sous-région, notamment au Togo.',
     image: {
       src: '/hero-image.jpg',
       alt: 'Deux personnes interviennent sur le moteur d’un véhicule.',
     },
-    primaryCta: { label: 'Découvrir nos domaines', href: '/services' },
-    secondaryCta: { label: 'Accéder à la plateforme', href: '/plateforme' },
+    primaryCta: { label: 'Découvrir BlodoCar', href: '/a-propos' },
+    secondaryCta: {
+      label: 'Essayer le B-Score',
+      href: 'https://bscore-flax.vercel.app/',
+    },
   },
   about: {
     label: 'Notre entreprise',
-    title: 'Qui nous sommes',
+    title: 'Réinventer la confiance automobile en Afrique de l’Ouest.',
     introduction:
-      "BlodoCar est une startup béninoise qui développe des solutions de confiance pour l'achat, la vente et le suivi des véhicules d'occasion au Bénin et en Afrique de l'Ouest.",
+      'Le marché automobile évolue, mais l’accès à une information fiable reste un défi. BlodoCar est né au Bénin avec une ambition régionale : rendre chaque étape de la vie d’un véhicule plus transparente, plus simple et plus sûre. Notre point de départ est le Bénin; à long terme, nous voulons étendre progressivement nos solutions au Togo puis aux autres pays de la sous-région.',
     mission: {
       title: 'Notre mission',
-      text: "Rendre le marché du véhicule d'occasion plus transparent grâce à des inspections certifiées, un score de santé lisible et des outils accessibles aux acheteurs, vendeurs et professionnels.",
+      text: 'Construire l’infrastructure de confiance automobile de référence en Afrique de l’Ouest.',
     },
-    vision: { title: 'Notre vision', text: '[À compléter]' },
-    values: {
-      title: 'Nos valeurs',
+    vision: {
+      title: 'Notre ambition',
+      text: 'Faire de la confiance un standard de l’automobile en Afrique de l’Ouest.',
+    },
+    ecosystem: {
+      title: 'Notre écosystème',
       items: [
         {
-          title: 'Confiance',
-          description:
-            "Une information claire sur l'état réel du véhicule avant toute décision.",
+          title: 'B-Score',
+          description: 'pour mieux connaître et évaluer un véhicule.',
         },
         {
-          title: 'Sérénité',
-          description: 'Acheter ou vendre sans stress, même à distance.',
+          title: 'B-Garage',
+          description:
+            'pour trouver et valoriser des réparateurs de confiance.',
         },
         {
-          title: 'Proximité',
-          description:
-            'Une présence sur place, à Cotonou, pour vous représenter.',
+          title: 'Historique véhicule',
+          description: 'pour garder une trace de la vie du véhicule.',
+        },
+        {
+          title: 'BlodoCar Market',
+          description: 'pour acheter et vendre avec davantage de transparence.',
         },
       ],
     },
+    values: {
+      title: 'Nos valeurs',
+      items: [
+        { title: 'Transparence', description: '' },
+        { title: 'Fiabilité', description: '' },
+        { title: 'Mérite', description: '' },
+        { title: 'Proximité', description: '' },
+      ],
+    },
+  },
+  journey: {
+    title: 'Votre véhicule. Tout au long de son parcours.',
+    description:
+      'De l’intention d’achat à la revente, BlodoCar vous aide à mieux connaître, acheter, entretenir, réparer et valoriser votre véhicule.',
+    stages: [
+      {
+        title: 'Acheter',
+        description:
+          'Faites-vous accompagner pour trouver et évaluer votre prochain véhicule en toute confiance.',
+      },
+      {
+        title: 'Vérifier',
+        description:
+          'Obtenez un diagnostic et un B-Score pour prendre une décision mieux informée.',
+      },
+      {
+        title: 'Entretenir & réparer',
+        description:
+          'Trouvez des professionnels près de chez vous et gardez une trace des interventions.',
+      },
+      {
+        title: 'Suivre',
+        description: 'Construisez l’historique numérique de votre véhicule.',
+      },
+      {
+        title: 'Revendre',
+        description:
+          'Valorisez votre véhicule grâce à son historique et ses informations vérifiées.',
+      },
+    ],
   },
   activities: {
-    label: 'Notre accompagnement',
-    title: 'Nos domaines d’activité',
+    label: 'Nos services',
+    title: 'Tout ce dont votre véhicule a besoin, au même endroit.',
     introduction:
-      "Du contrôle certifié à la mise en relation avec des professionnels, BlodoCar apporte des repères concrets à chaque étape de l'achat ou de la vente.",
+      'De l’achat à la revente, BlodoCar vous accompagne à chaque étape du cycle de vie de votre véhicule.',
     items: [
       {
-        title: 'B-Score : le passeport santé du véhicule',
+        title: 'Acheter en confiance',
         description:
-          "Chaque véhicule inspecté reçoit un score de santé sur 100. Scannez son QR code ou recherchez-le par VIN ou immatriculation pour consulter gratuitement son score et ses alertes principales.",
+          'Faites-vous accompagner et orienter pour trouver votre prochain véhicule et prendre une décision mieux informée.',
+        action: {
+          label: 'Trouver un véhicule',
+          href: 'https://bscore-flax.vercel.app/marketplace',
+        },
         points: [
-          'Rapport d’expertise détaillé : 2 000 FCFA',
-          '36 points contrôlés, photos et état des principaux organes',
-          'Vérifications administratives, douanières et Interpol',
+          'Auto-diagnostic gratuit pour vous orienter dans votre choix',
+          'Véhicules avec B-Score',
+          'Diagnostic certifié pour confirmer votre choix',
+          'BlodoCar Market',
         ],
       },
       {
-        title: 'Inspection d’urgence et diagnostic mobile',
+        title: 'Entretenir & réparer',
         description:
-          "Vous avez repéré une voiture ? Un mécanicien expert BlodoCar peut se déplacer auprès du vendeur pour l'inspecter avant votre achat.",
+          'Prenez soin de votre véhicule avec des professionnels de confiance issus du réseau BlodoCar.',
+        action: { label: 'Trouver un réparateur', href: '/contact' },
         points: [
-          'Contrôle de 36 points et essai routier',
-          'Diagnostic électronique avec valise OBD-II',
-          'Rapport avec photos et attribution du B-Score',
+          'Réparateurs certifiés BlodoCar, formés et évalués',
+          'Un réseau de proximité, près de chez vous',
+          'Devis transparents',
+          'Suivi des interventions et carnet numérique',
         ],
       },
       {
-        title: 'Auto-diagnostic acheteur gratuit',
+        title: 'Gérer & valoriser',
         description:
-          "Un parcours mobile guide l'acheteur pendant sa visite, même sans connaissances mécaniques, pour repérer les signes qui méritent attention.",
+          'Gardez le contrôle de votre véhicule et préparez mieux sa revente.',
+        action: { label: 'Découvrir nos solutions', href: '/plateforme' },
         points: [
-          '27 questions réparties en 8 étapes',
-          'Contrôles visuels, bruits, fumée, voyants et freinage',
-          'Score indicatif et alertes de sécurité immédiates',
+          'Historique du véhicule',
+          'Suivi du kilométrage',
+          'Gestion de flotte',
+          'Valorisation du véhicule',
         ],
       },
       {
-        title: 'Marketplace certifiée et espace concessionnaires',
-        description:
-          "Trouvez des véhicules d'occasion avec leur B-Score affiché, ou valorisez votre parc en partageant des informations vérifiées avec vos clients.",
+        title: 'Pour les professionnels',
+        description: 'Des outils pour accompagner votre activité automobile.',
+        action: {
+          label: 'Découvrir nos solutions professionnelles',
+          href: 'https://bscore-flax.vercel.app/pro',
+        },
         points: [
-          'Véhicules présentés avec leur score de santé',
-          'Affiches commerciales avec QR code du B-Score',
-          'Un rapport digital pour éclairer la décision d’achat',
-        ],
-      },
-      {
-        title: 'Réseau B-Angel',
-        description:
-          'B-Angel met en réseau des garages et mécaniciens partenaires pour réaliser les inspections et accompagner les automobilistes.',
-        points: [
-          'Outils dédiés aux mécaniciens et ateliers partenaires',
-          'Digitalisation des devis de réparation',
-          'Rémunération pour chaque expertise réalisée',
+          'Concessionnaires, garages, entreprises, assureurs et banques',
+          'B-Score, BlodoCar Market et B-Garage',
+          'BLODO Fleet et données véhicule',
         ],
       },
     ],
   },
   platform: {
     label: 'Plateforme et applications',
-    title: 'Retrouvez BlodoCar en ligne',
+    title: 'Un outil pour chaque acteur automobile',
     description:
-      'BlodoCar dispose déjà de sa plateforme officielle et de ses applications mobiles. Ce site présente l’entreprise : pour utiliser nos services, rendez-vous sur la plateforme.',
-    pendingLabel: '[Lien à compléter]',
+      'Trois applications accompagnent les propriétaires, les réparateurs et les acheteurs à chaque étape de la vie d’un véhicule.',
+    applications: [
+      {
+        name: 'BlodoCar',
+        audience: 'Propriétaires, concessionnaires et entreprises à flottes',
+        description:
+          'Suivez vos véhicules, demandez des devis et trouvez un réparateur.',
+      },
+      {
+        name: 'B-Garage',
+        audience: 'Réparateurs BlodoCar et garages partenaires',
+        description:
+          'Recevez des missions, réalisez des diagnostics et faites évoluer votre niveau.',
+      },
+      {
+        name: 'B-Score (web)',
+        audience: 'Acheteurs, concessionnaires et partenaires',
+        description:
+          'Consultez les scores, commandez un diagnostic et accédez à BlodoCar Market.',
+      },
+    ],
+    scoreSummary:
+      'Le B-Score est une note sur 100 fondée sur le diagnostic technique, l’historique des réparations, les vérifications administratives (douane, vol, rappels constructeur) et l’historique du véhicule lorsqu’il est disponible.',
     links: [
+      { label: 'Accéder à B-Score', href: 'https://bscore-flax.vercel.app/' },
+      { label: 'Télécharger BlodoCar', href: 'https://play.google.com/store' },
+      { label: 'Devenir réparateur partenaire', href: '/contact' },
       {
         label: 'Espace concessionnaires et vendeurs',
         href: 'https://bscore-flax.vercel.app/pro',
       },
-      { label: 'Google Play', href: '[À compléter]' },
-      { label: 'App Store', href: '[À compléter]' },
     ],
   },
   objectives: {
-    label: 'Notre ambition',
-    title: 'Nos objectifs',
-    introduction:
-      "Ce que BlodoCar veut apporter au marché du véhicule d'occasion.",
+    label: 'Nos objectifs',
+    title: 'Construire un marché automobile plus transparent et plus fiable.',
+    introduction: 'Les priorités de BlodoCar pour faire évoluer le marché.',
     items: [
-      "Offrir un diagnostic clair de l'état d'un véhicule avant chaque achat",
-      'Permettre d’acheter en confiance, même à distance',
-      'Donner aux vendeurs un rapport digital qui rassure leurs acheteurs',
+      'Restaurer la confiance : rendre l’achat et la vente de véhicules d’occasion plus transparents.',
+      'Réduire les mauvaises surprises : mieux informer pour limiter les défauts cachés et les dépenses imprévues.',
+      'Valoriser les bons professionnels : former, évaluer et valoriser les réparateurs qui font la différence.',
+      'Digitaliser l’histoire du véhicule : créer un historique fiable et accessible tout au long de sa vie.',
+      'Devenir une référence régionale : partir du Bénin et s’étendre progressivement à la sous-région, notamment au Togo et aux autres pays de l’UEMOA.',
     ],
+    ambition:
+      'À long terme, partir du Bénin, étendre progressivement BlodoCar au Togo puis aux autres pays de la sous-région, et faire de la confiance un standard de l’automobile en Afrique de l’Ouest.',
     metrics: [],
   },
   team: {
     label: 'Notre équipe',
     title: 'Les personnes derrière BlodoCar',
-    introduction: '[À compléter]',
-    emptyState: '[À compléter]',
+    introduction:
+      'Une équipe mêlant expertise technique, terrain automobile et gestion de projet, basée à Cotonou.',
     members: [
       {
         name: 'Zoulkarnaïni Yinde Boukari',
-        role: 'CEO et co-fondateur',
-        bio: 'Porte la vision de BlodoCar : stratégie, partenariats et développement de l’entreprise.',
+        role: 'CEO & co-fondateur',
+        bio: '',
         validated: false,
         initials: 'ZB',
         photo: '',
-        linkedin: { label: 'LinkedIn', href: '[À compléter]' },
+        linkedin: { label: 'LinkedIn', href: '' },
       },
       {
         name: 'Bilel Houngan',
-        role: 'CTO et co-fondateur',
-        bio: 'Conçoit et sécurise la plateforme technologique de BlodoCar et dirige l’équipe technique.',
+        role: 'CTO & co-fondateur, développeur full stack',
+        bio: '',
         validated: false,
         initials: 'BH',
         photo: '',
-        linkedin: { label: 'LinkedIn', href: '[À compléter]' },
+        linkedin: { label: 'LinkedIn', href: '' },
       },
       {
         name: 'Ezéchiel Bara',
-        role: 'Co-COO et co-fondateur',
-        bio: 'Veille à la qualité technique du réseau de réparateurs et au bon déroulement des opérations sur le terrain.',
+        role: 'Co-fondateur, Co-COO, maintenance automobile',
+        bio: '',
         validated: false,
         initials: 'EB',
         photo: '',
-        linkedin: { label: 'LinkedIn', href: '[À compléter]' },
+        linkedin: { label: 'LinkedIn', href: '' },
       },
       {
         name: 'Juste Kocou',
-        role: 'Co-COO et co-fondateur',
-        bio: 'Assure l’outillage, le support technique sur le terrain et la communication de BlodoCar.',
+        role: 'Co-fondateur, Co-COO, génie électrique et informatique',
+        bio: '',
         validated: false,
         initials: 'JK',
         photo: '',
-        linkedin: { label: 'LinkedIn', href: '[À compléter]' },
+        linkedin: { label: 'LinkedIn', href: '' },
       },
       {
         name: 'Chanel Akouehou',
         role: 'Développeur',
-        bio: 'Participe au développement et à la maintenance des applications et de la plateforme.',
+        bio: '',
         validated: false,
         initials: 'CA',
         photo: '',
-        linkedin: { label: 'LinkedIn', href: '[À compléter]' },
+        linkedin: { label: 'LinkedIn', href: '' },
       },
     ],
   },
   contact: {
     label: 'Parlons ensemble',
     title: 'Nous contacter',
-    introduction: '[À compléter]',
-    pendingLabel: '[À compléter]',
+    introduction: '',
     email: {
       label: 'E-mail',
       value: 'blodo.info@gmail.com',
@@ -356,48 +449,41 @@ export const siteContent: SiteContent = {
       value: '+229 01 62 83 88 88',
       href: 'tel:+2290162838888',
     },
-    // À confirmer : le numéro est-il aussi le WhatsApp ?
-    whatsapp: {
-      label: 'WhatsApp',
-      value: '+229 01 62 83 88 88',
-      href: 'https://wa.me/2290162838888',
-    },
     zoneLabel: 'Zone d’intervention',
     zoneOfIntervention: 'Cotonou, Bénin',
-    addressLabel: 'Adresse',
-    address: '[À compléter]',
-    hoursLabel: 'Horaires',
-    hours: '[À compléter]',
     socialLinks: [
-      { label: 'Facebook', href: '[À compléter]' },
-      { label: 'Instagram', href: '[À compléter]' },
       {
         label: 'Publication BlodoCar sur LinkedIn',
         href: 'https://www.linkedin.com/posts/blodocar-bscore-automobile-share-7516477099176607744-AeCr/',
       },
-      { label: 'TikTok', href: '[À compléter]' },
-      { label: 'YouTube', href: '[À compléter]' },
     ],
-    socialEmptyState: 'Réseaux sociaux officiels : [À compléter]',
   },
   footer: {
     calloutEyebrow: 'Un achat en vue ?',
     calloutTitle: 'Décidez avec les bonnes informations.',
     calloutDescription:
-      'Faites-vous accompagner pour le diagnostic d’un véhicule à Cotonou, même à distance.',
+      'Née au Bénin, BlodoCar développe des solutions pour accompagner les automobilistes dans toute la sous-région.',
     calloutCta: { label: 'Découvrir nos services', href: '/services' },
     servicesTitle: 'Nos services',
     navigationTitle: 'Explorer',
     contactTitle: 'Nous joindre',
     backToTop: 'Retour en haut de page',
-    legalSummary: 'Mentions légales',
-    legalTitle: 'Informations légales',
+    legalSummary: 'Informations juridiques',
+    legalTitle: 'Informations disponibles',
+    legalNotice:
+      'Les deux documents fournis sont des projets d’octobre 2026 à faire valider par un avocat béninois. Ils ne précisent pas la forme juridique, l’adresse postale complète, le responsable de publication ni l’hébergeur.',
     legalFields: [
-      { label: 'Éditeur', value: '[À compléter]' },
-      { label: 'Adresse', value: '[À compléter]' },
+      { label: 'Organisation', value: 'BlodoCar' },
+      { label: 'Localisation', value: 'Cotonou, Bénin' },
       { label: 'E-mail', value: 'blodo.info@gmail.com' },
-      { label: 'Responsable de publication', value: '[À compléter]' },
-      { label: 'Hébergement', value: '[À compléter]' },
+      { label: 'Téléphone', value: '+229 01 62 83 88 88' },
+    ],
+    legalDocuments: [
+      {
+        label: 'Conditions générales d’utilisation (projet)',
+        href: termsDocument,
+      },
+      { label: 'Politique de confidentialité (projet)', href: privacyDocument },
     ],
     copyright: '© BlodoCar. Tous droits réservés.',
   },

@@ -6,6 +6,7 @@ import {
   Handshake,
   Wrench,
 } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { siteContent } from '../../content/siteContent'
 import Reveal from '../ui/Reveal'
 import SectionHeading from '../ui/SectionHeading'
@@ -22,35 +23,38 @@ function ActivitiesSection() {
       id="activities"
     >
       <div className="mx-auto max-w-7xl">
-        <Reveal>
-          <SectionHeading
-            description={activities.introduction}
-            id="activities-title"
-            label={activities.label}
-            title={activities.title}
-          />
-        </Reveal>
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="text-center">
+          <Reveal>
+            <SectionHeading
+              description={activities.introduction}
+              id="activities-title"
+              label={activities.label}
+              title={activities.title}
+              wide
+            />
+          </Reveal>
+        </div>
+        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {activities.items.map((activity, index) => {
             const Icon = activityIcons[index] ?? CarFront
 
             return (
               <Reveal className="h-full" key={activity.title}>
-                <article className="group flex h-full min-h-64 flex-col rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-brand-orange/40 hover:shadow-xl hover:shadow-brand-night/5 motion-reduce:transform-none sm:p-8">
-                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-brand-night text-white transition-colors group-hover:bg-brand-orange-strong">
-                    <Icon aria-hidden="true" size={26} strokeWidth={1.8} />
+                <article className="group flex h-full min-h-56 flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-brand-orange/40 hover:shadow-xl hover:shadow-brand-night/5 motion-reduce:transform-none sm:p-6">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-night text-white transition-colors group-hover:bg-brand-orange group-hover:text-brand-night">
+                    <Icon aria-hidden="true" size={23} strokeWidth={1.8} />
                   </span>
-                  <h3 className="mt-8 text-xl font-bold leading-snug text-brand-night">
+                  <h3 className="mt-5 text-lg font-bold leading-snug text-brand-night">
                     {activity.title}
                   </h3>
-                  <p className="mt-3 flex-1 leading-7 text-slate-600">
+                  <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">
                     {activity.description}
                   </p>
                   {activity.points && (
-                    <ul className="mt-5 space-y-2">
+                    <ul className="mt-4 space-y-1.5">
                       {activity.points.map((point) => (
                         <li
-                          className="flex gap-2 text-sm leading-6 text-slate-600"
+                          className="flex gap-2 text-sm leading-5 text-slate-600"
                           key={point}
                         >
                           <span
@@ -62,11 +66,25 @@ function ActivitiesSection() {
                       ))}
                     </ul>
                   )}
-                  <ArrowUpRight
-                    aria-hidden="true"
-                    className="mt-6 text-brand-orange-strong"
-                    size={20}
-                  />
+                  {activity.action.href.startsWith('/') ? (
+                    <Link
+                      className="mt-4 inline-flex w-fit items-center gap-2 text-sm font-semibold text-brand-blue underline decoration-brand-orange/40 underline-offset-4 hover:text-brand-night"
+                      to={activity.action.href}
+                    >
+                      {activity.action.label}
+                      <ArrowUpRight aria-hidden="true" size={16} />
+                    </Link>
+                  ) : (
+                    <a
+                      className="mt-4 inline-flex w-fit items-center gap-2 text-sm font-semibold text-brand-blue underline decoration-brand-orange/40 underline-offset-4 hover:text-brand-night"
+                      href={activity.action.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {activity.action.label}
+                      <ArrowUpRight aria-hidden="true" size={16} />
+                    </a>
+                  )}
                 </article>
               </Reveal>
             )

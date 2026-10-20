@@ -4,6 +4,7 @@ type SectionHeadingProps = {
   description?: string
   id: string
   inverted?: boolean
+  wide?: boolean
 }
 
 function SectionHeading({
@@ -12,12 +13,13 @@ function SectionHeading({
   description,
   id,
   inverted = false,
+  wide = false,
 }: SectionHeadingProps) {
   return (
-    <div className="max-w-3xl">
+    <div className={wide ? 'max-w-none' : 'max-w-3xl'}>
       <p
         className={`text-sm font-bold uppercase tracking-[0.18em] ${
-          inverted ? 'text-orange-300' : 'text-brand-orange-strong'
+          inverted ? 'text-brand-orange' : 'text-brand-blue'
         }`}
       >
         {label}
@@ -32,7 +34,7 @@ function SectionHeading({
       </h2>
       {description && (
         <p
-          className={`mt-5 max-w-2xl text-base leading-7 sm:text-lg ${
+          className={`mt-5 ${wide ? 'max-w-none' : 'max-w-2xl'} text-base leading-7 sm:text-lg ${
             inverted ? 'text-slate-300' : 'text-slate-600'
           }`}
         >

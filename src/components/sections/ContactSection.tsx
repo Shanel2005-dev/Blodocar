@@ -3,10 +3,9 @@ import {
   AtSign,
   Link as LinkIcon,
   MapPin,
-  MessageCircle,
   Phone,
 } from 'lucide-react'
-import { isContentPlaceholder, siteContent } from '../../content/siteContent'
+import { siteContent } from '../../content/siteContent'
 import Reveal from '../ui/Reveal'
 import SectionHeading from '../ui/SectionHeading'
 
@@ -15,10 +14,6 @@ function ContactSection() {
   const linkedInLink = contact.socialLinks.find(
     (link) => link.label === 'Publication BlodoCar sur LinkedIn',
   )
-  const introduction = isContentPlaceholder(contact.introduction)
-    ? undefined
-    : contact.introduction
-
   return (
     <section
       aria-labelledby="contact-title"
@@ -28,7 +23,7 @@ function ContactSection() {
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <SectionHeading
-            description={introduction}
+            description={contact.introduction || undefined}
             id="contact-title"
             label={contact.label}
             title={contact.title}
@@ -42,7 +37,7 @@ function ContactSection() {
                 aria-hidden="true"
                 className="absolute -right-20 -top-24 -z-10 h-72 w-72 rounded-full border-[44px] border-white/5"
               />
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-300">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-orange">
                 {contact.zoneOfIntervention}
               </p>
               <h3 className="mt-5 max-w-lg text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
@@ -52,19 +47,17 @@ function ContactSection() {
                 {siteContent.activities.introduction}
               </p>
               <a
-                className="mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-xl bg-brand-orange-strong px-5 py-3 font-bold text-white transition hover:bg-brand-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                href={contact.whatsapp.href}
-                rel="noreferrer"
-                target="_blank"
+                className="mt-8 inline-flex min-h-12 items-center justify-center gap-3 rounded-xl bg-brand-orange px-5 py-3 font-bold text-brand-night transition hover:bg-brand-blue hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                href={contact.phone.href}
               >
-                <MessageCircle aria-hidden="true" size={19} />
-                Écrire sur WhatsApp
+                <Phone aria-hidden="true" size={19} />
+                Appeler BlodoCar
                 <ArrowUpRight aria-hidden="true" size={18} />
               </a>
             </div>
 
             <div className="bg-white p-8 sm:p-12 lg:p-14">
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-orange-strong">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-blue">
                 Coordonnées
               </p>
               <div className="mt-7 divide-y divide-slate-200">
@@ -72,7 +65,7 @@ function ContactSection() {
                   className="group flex items-center gap-4 py-5 first:pt-0"
                   href={contact.phone.href}
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-100 text-brand-night transition group-hover:bg-orange-100 group-hover:text-brand-orange-strong">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-100 text-brand-night transition group-hover:bg-brand-orange/10 group-hover:text-brand-blue">
                     <Phone aria-hidden="true" size={19} />
                   </span>
                   <span className="min-w-0 flex-1">
@@ -85,7 +78,7 @@ function ContactSection() {
                   </span>
                   <ArrowUpRight
                     aria-hidden="true"
-                    className="text-slate-400 transition group-hover:text-brand-orange-strong"
+                    className="text-slate-400 transition group-hover:text-brand-blue"
                     size={18}
                   />
                 </a>
@@ -94,7 +87,7 @@ function ContactSection() {
                   className="group flex items-center gap-4 py-5"
                   href={contact.email.href}
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-100 text-brand-night transition group-hover:bg-orange-100 group-hover:text-brand-orange-strong">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-100 text-brand-night transition group-hover:bg-brand-orange/10 group-hover:text-brand-blue">
                     <AtSign aria-hidden="true" size={19} />
                   </span>
                   <span className="min-w-0 flex-1">
@@ -107,7 +100,7 @@ function ContactSection() {
                   </span>
                   <ArrowUpRight
                     aria-hidden="true"
-                    className="text-slate-400 transition group-hover:text-brand-orange-strong"
+                    className="text-slate-400 transition group-hover:text-brand-blue"
                     size={18}
                   />
                 </a>
@@ -132,7 +125,7 @@ function ContactSection() {
                     rel="noreferrer"
                     target="_blank"
                   >
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-100 text-brand-night transition group-hover:bg-orange-100 group-hover:text-brand-orange-strong">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-100 text-brand-night transition group-hover:bg-brand-orange/10 group-hover:text-brand-blue">
                       <LinkIcon aria-hidden="true" size={19} />
                     </span>
                     <span className="min-w-0 flex-1">
@@ -145,7 +138,7 @@ function ContactSection() {
                     </span>
                     <ArrowUpRight
                       aria-hidden="true"
-                      className="text-slate-400 transition group-hover:text-brand-orange-strong"
+                      className="text-slate-400 transition group-hover:text-brand-blue"
                       size={18}
                     />
                   </a>

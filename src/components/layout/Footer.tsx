@@ -1,9 +1,10 @@
 import {
   ArrowRight,
+  ArrowUpRight,
   ArrowUp,
+  FileText,
   Mail,
   MapPin,
-  MessageCircle,
   Phone,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -13,7 +14,7 @@ function Footer() {
   const { footer, brand, header, contact, activities } = siteContent
 
   return (
-    <footer className="relative isolate mt-20 border-t-4 border-brand-orange bg-brand-night text-white sm:mt-24">
+    <footer className="relative isolate mt-12 overflow-x-clip border-t-4 border-brand-orange bg-brand-night text-white sm:mt-16">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute right-0 top-48 -z-10 h-[28rem] w-[28rem] translate-x-1/3 rounded-full border border-white/[0.07]"
@@ -24,40 +25,29 @@ function Footer() {
       />
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="relative -mt-16 overflow-hidden rounded-2xl bg-brand-orange-strong shadow-2xl shadow-black/20 sm:-mt-20">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-16 -top-28 h-72 w-72 rounded-full border border-white/15"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-5 -top-16 h-52 w-52 rounded-full border border-white/15"
-          />
-          <div className="relative grid gap-8 p-7 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:px-12 lg:py-11">
-            <div className="max-w-2xl">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-100">
-                {footer.calloutEyebrow}
-              </p>
-              <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
-                {footer.calloutTitle}
-              </h2>
-              <p className="mt-3 max-w-xl leading-7 text-orange-50">
-                {footer.calloutDescription}
-              </p>
-            </div>
-            <Link
-              className="inline-flex min-h-14 items-center justify-between gap-6 rounded-lg bg-white px-5 py-3 font-bold text-brand-night shadow-lg shadow-black/10 transition hover:bg-orange-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-              to={footer.calloutCta.href}
-            >
-              {footer.calloutCta.label}
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-night text-white">
-                <ArrowRight aria-hidden="true" size={17} />
-              </span>
-            </Link>
+        <div className="grid gap-6 border-b border-white/15 py-8 sm:py-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+          <div className="max-w-3xl">
+            <p className="flex items-center gap-3 text-sm font-bold uppercase text-brand-orange">
+              <span aria-hidden="true" className="h-px w-9 bg-brand-orange" />
+              {footer.calloutEyebrow}
+            </p>
+            <h2 className="mt-3 max-w-2xl text-3xl font-bold leading-tight text-white sm:text-4xl">
+              {footer.calloutTitle}
+            </h2>
+            <p className="mt-3 max-w-xl leading-7 text-slate-300">
+              {footer.calloutDescription}
+            </p>
           </div>
+          <Link
+            className="inline-flex min-h-14 items-center justify-between gap-5 rounded-lg bg-brand-orange px-5 py-3 font-bold text-brand-night transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange"
+            to={footer.calloutCta.href}
+          >
+            {footer.calloutCta.label}
+            <ArrowRight aria-hidden="true" size={19} />
+          </Link>
         </div>
 
-        <div className="grid gap-12 py-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_0.9fr_1.2fr] lg:gap-10 lg:py-16">
+        <div className="grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_0.9fr_1.2fr] lg:gap-8 lg:py-12">
           <div>
             <Link
               aria-label={brand.name}
@@ -72,10 +62,10 @@ function Footer() {
                 width={259}
               />
             </Link>
-            <p className="mt-5 max-w-xs text-sm leading-7 text-slate-300">
+            <p className="mt-4 max-w-xs text-sm leading-7 text-slate-300">
               {brand.tagline}
             </p>
-            <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3 py-2 text-xs font-medium text-slate-200">
+            <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-3 py-2 text-xs font-medium text-slate-200">
               <MapPin
                 aria-hidden="true"
                 className="text-orange-300"
@@ -86,10 +76,10 @@ function Footer() {
           </div>
 
           <nav aria-label={footer.servicesTitle}>
-            <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-orange-300">
+            <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
               {footer.servicesTitle}
             </h2>
-            <ul className="mt-6 space-y-4">
+            <ul className="mt-4 space-y-3">
               {activities.items.map((activity) => (
                 <li key={activity.title}>
                   <Link
@@ -109,10 +99,10 @@ function Footer() {
           </nav>
 
           <nav aria-label={footer.navigationTitle}>
-            <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-orange-300">
+            <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
               {footer.navigationTitle}
             </h2>
-            <ul className="mt-6 space-y-4">
+            <ul className="mt-4 space-y-3">
               {header.nav.map((item) => (
                 <li key={item.href}>
                   <Link
@@ -127,10 +117,10 @@ function Footer() {
           </nav>
 
           <div>
-            <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-orange-300">
+            <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
               {footer.contactTitle}
             </h2>
-            <div className="mt-6 space-y-3">
+            <div className="mt-4 space-y-2">
               <a
                 className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-3 text-sm text-slate-200 transition hover:border-brand-orange/60 hover:bg-white/[0.07] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-300"
                 href={contact.phone.href}
@@ -163,21 +153,11 @@ function Footer() {
                   </span>
                 </span>
               </a>
-              <a
-                className="inline-flex items-center gap-2 rounded px-1 py-2 text-sm font-semibold text-orange-300 transition hover:text-orange-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-300"
-                href={contact.whatsapp.href}
-                rel="noreferrer"
-                target="_blank"
-              >
-                <MessageCircle aria-hidden="true" size={17} />
-                {contact.whatsapp.label}
-                <ArrowRight aria-hidden="true" size={15} />
-              </a>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-5 border-t border-white/15 py-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 border-t border-white/15 py-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs leading-5 text-slate-400">{footer.copyright}</p>
           <div className="flex flex-wrap items-center gap-6">
             <details className="text-xs text-slate-300">
@@ -188,6 +168,9 @@ function Footer() {
                 <h2 className="font-semibold text-white">
                   {footer.legalTitle}
                 </h2>
+                <p className="mt-3 text-sm leading-6 text-slate-300">
+                  {footer.legalNotice}
+                </p>
                 <dl className="mt-3 space-y-2">
                   {footer.legalFields.map((field) => (
                     <div key={field.label}>
@@ -198,6 +181,22 @@ function Footer() {
                     </div>
                   ))}
                 </dl>
+                <ul className="mt-4 space-y-3 border-t border-white/10 pt-4">
+                  {footer.legalDocuments.map((document) => (
+                    <li key={document.href}>
+                      <a
+                        className="inline-flex items-center gap-2 font-medium text-orange-300 underline decoration-orange-300/50 underline-offset-4 hover:text-white"
+                        href={document.href}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <FileText aria-hidden="true" size={16} />
+                        {document.label}
+                        <ArrowUpRight aria-hidden="true" size={15} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </details>
             <Link

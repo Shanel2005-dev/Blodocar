@@ -6,14 +6,18 @@ export default {
     extend: {
       colors: {
         brand: {
-          night: '#14213D',
-          orange: '#E8640C',
-          'orange-strong': '#B94B00',
-          'orange-hover': '#A84300',
+          night: '#04245F',
+          blue: '#0A3A85',
+          green: '#0C7829',
+          orange: '#FF4F00',
+          'orange-strong': '#FF4F00',
+          'orange-hover': '#0A3A85',
+          muted: '#4A5A7A',
+          border: '#D9DFEA',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
     },
   },

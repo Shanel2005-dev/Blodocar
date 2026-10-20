@@ -42,7 +42,7 @@ function Header() {
             aria-label={
               isMenuOpen ? header.menuCloseLabel : header.menuOpenLabel
             }
-            className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-brand-night bg-brand-night text-white shadow-md transition hover:border-brand-orange-strong hover:bg-brand-orange-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange lg:hidden"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-brand-night bg-brand-night text-white shadow-md transition hover:border-brand-blue hover:bg-brand-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange lg:hidden"
             onClick={() => setIsMenuOpen((open) => !open)}
             type="button"
           >
@@ -63,8 +63,8 @@ function Header() {
                 className={({ isActive }) =>
                   `rounded-xl px-4 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange lg:rounded-lg lg:px-3 lg:py-2 ${
                     isActive
-                      ? 'bg-orange-50 text-brand-orange-strong'
-                      : 'text-slate-700 hover:bg-orange-50 hover:text-brand-orange-strong'
+                      ? 'bg-brand-orange/10 text-brand-blue'
+                      : 'text-slate-700 hover:bg-brand-orange/10 hover:text-brand-blue'
                   }`
                 }
                 end

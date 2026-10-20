@@ -1,8 +1,5 @@
 import { ArrowUpRight, Download, Globe2 } from 'lucide-react'
-import {
-  isContentPlaceholder,
-  siteContent,
-} from '../../content/siteContent'
+import { siteContent } from '../../content/siteContent'
 import Reveal from '../ui/Reveal'
 import SectionHeading from '../ui/SectionHeading'
 
@@ -33,57 +30,58 @@ function PlatformSection() {
             title={platform.title}
           />
           <div className="mt-9 inline-flex items-center gap-3 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-slate-200">
-            <Globe2 aria-hidden="true" className="text-orange-300" size={20} />
+            <Globe2
+              aria-hidden="true"
+              className="text-brand-orange"
+              size={20}
+            />
             <span>{siteContent.brand.name}</span>
           </div>
         </Reveal>
-        <div className="grid gap-4 sm:grid-cols-3">
-          {platform.links.map((link, index) => {
-            const isPending = isContentPlaceholder(link.href)
-            const Icon = index === 0 ? Globe2 : Download
-            const className =
-              'flex min-h-40 flex-col justify-between rounded-2xl border border-white/15 bg-white/[0.06] p-6 text-white transition hover:border-orange-300/70 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-300'
-
-            return (
-              <Reveal className="h-full" key={link.label}>
-                {isPending ? (
-                  <div
-                    aria-label={`${link.label} — ${platform.pendingLabel}`}
-                    className={`${className} cursor-default`}
-                  >
-                    <Icon
-                      aria-hidden="true"
-                      className="text-orange-300"
-                      size={24}
-                    />
-                    <span>
-                      <span className="block font-semibold">{link.label}</span>
-                      <span className="mt-2 block text-sm text-slate-300">
-                        {platform.pendingLabel}
-                      </span>
-                    </span>
-                  </div>
-                ) : (
-                  <a
-                    className={className}
-                    href={link.href}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <Icon
-                      aria-hidden="true"
-                      className="text-orange-300"
-                      size={24}
-                    />
-                    <span className="flex items-center justify-between gap-2 font-semibold">
-                      {link.label}
-                      <ArrowUpRight aria-hidden="true" size={18} />
-                    </span>
-                  </a>
-                )}
+        <div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {platform.applications.map((application) => (
+              <Reveal className="h-full" key={application.name}>
+                <article className="h-full rounded-xl border border-white/15 bg-white/[0.06] p-5 text-white">
+                  <h3 className="font-semibold">{application.name}</h3>
+                  <p className="mt-3 text-sm leading-6 text-orange-200">
+                    {application.audience}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-slate-300">
+                    {application.description}
+                  </p>
+                </article>
               </Reveal>
-            )
-          })}
+            ))}
+          </div>
+          <p className="mt-6 border-l-2 border-orange-300 pl-4 text-sm leading-6 text-slate-200">
+            {platform.scoreSummary}
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {platform.links.map((link, index) => {
+              const Icon = index === 0 ? Globe2 : Download
+              const className =
+                'inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-orange-300/70 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-300'
+
+              return (
+                <a
+                  className={className}
+                  href={link.href}
+                  key={link.label}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <Icon
+                    aria-hidden="true"
+                    className="text-brand-orange"
+                    size={18}
+                  />
+                  {link.label}
+                  <ArrowUpRight aria-hidden="true" size={16} />
+                </a>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>

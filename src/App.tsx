@@ -23,7 +23,7 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
     description: siteContent.about.introduction,
   },
   '/services': {
-    title: 'Nos services automobile à Cotonou',
+    title: 'Nos solutions automobiles',
     description: siteContent.activities.introduction,
   },
   '/plateforme': {
@@ -68,7 +68,8 @@ function PageMetadata() {
 
     description.content = page?.description ?? metadata.description
     openGraphTitle.content = document.title
-    openGraphDescription.content = page?.description ?? metadata.openGraphDescription
+    openGraphDescription.content =
+      page?.description ?? metadata.openGraphDescription
   }, [metadata, pathname])
 
   return null
@@ -77,14 +78,14 @@ function PageMetadata() {
 function NotFoundPage() {
   return (
     <section className="mx-auto max-w-3xl px-5 py-32 text-center sm:px-8">
-      <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-orange-strong">
+      <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-blue">
         Page introuvable
       </p>
       <h1 className="mt-4 text-3xl font-bold text-brand-night">
         Cette page n’existe pas.
       </h1>
       <Link
-        className="mt-7 inline-flex font-semibold text-brand-orange-strong underline underline-offset-4"
+        className="mt-7 inline-flex font-semibold text-brand-blue underline underline-offset-4"
         to="/"
       >
         Retour à l’accueil

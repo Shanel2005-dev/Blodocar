@@ -24,7 +24,7 @@ function HeroSection() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_78%_45%,rgba(232,100,12,0.2),transparent_42%)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_78%_45%,rgba(255,79,0,0.2),transparent_42%)]"
       />
       <div
         aria-hidden="true"
@@ -36,9 +36,6 @@ function HeroSection() {
       />
       <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="mb-5 inline-flex rounded border border-orange-300/40 bg-orange-300/10 px-3 py-1.5 text-xs font-semibold tracking-wide text-orange-200">
-            {hero.prototypeNotice}
-          </p>
           <p className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold tracking-wide text-slate-100">
             <span
               aria-hidden="true"
@@ -64,14 +61,15 @@ function HeroSection() {
               {hero.primaryCta.label}
               <ArrowDown aria-hidden="true" size={18} />
             </Button>
-            <Button
-              className="px-6 py-3"
-              to={hero.secondaryCta.href}
-              variant="secondary"
+            <a
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-white/30 bg-white/5 px-6 py-3 font-semibold text-white transition hover:border-white/60 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange"
+              href={hero.secondaryCta.href}
+              rel="noreferrer"
+              target="_blank"
             >
               {hero.secondaryCta.label}
               <ArrowUpRight aria-hidden="true" size={18} />
-            </Button>
+            </a>
           </div>
         </div>
       </div>
