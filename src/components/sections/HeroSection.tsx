@@ -35,7 +35,7 @@ function HeroSection() {
         className="pointer-events-none absolute -right-28 top-32 -z-10 h-72 w-72 rounded-full border border-brand-orange/30 sm:-right-12 sm:h-[26rem] sm:w-[26rem]"
       />
       <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-7xl text-center">
           <p className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold tracking-wide text-slate-100">
             <span
               aria-hidden="true"
@@ -44,7 +44,7 @@ function HeroSection() {
             {hero.eyebrow}
           </p>
           <h1
-            className="mx-auto max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-7xl"
+            className="mx-auto max-w-6xl text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-7xl"
             id="hero-title"
           >
             {hero.title}
@@ -53,7 +53,7 @@ function HeroSection() {
             aria-hidden="true"
             className="mx-auto mt-7 h-1 w-20 rounded-full bg-brand-orange"
           />
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+          <p className="mx-auto mt-6 max-w-6xl text-lg leading-8 text-slate-300 sm:text-xl">
             {hero.subtitle}
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">

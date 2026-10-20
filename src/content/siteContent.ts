@@ -183,7 +183,7 @@ export const siteContent: SiteContent = {
     eyebrow: 'Née au Bénin · Pensée pour la sous-région',
     title: 'Roulez en toute sérénité.',
     subtitle:
-      'BlodoCar vous accompagne à chaque étape de la vie de votre véhicule. Née au Bénin, la solution a vocation à s’étendre à la sous-région, notamment au Togo.',
+      'BlodoCar vous accompagne à chaque étape de la vie de votre véhicule. Née au Bénin, la solution a vocation à accompagner à terme les automobilistes dans toute la sous-région ouest-africaine, dont le Togo.',
     image: {
       src: '/hero-image.jpg',
       alt: 'Deux personnes interviennent sur le moteur d’un véhicule.',
@@ -198,7 +198,7 @@ export const siteContent: SiteContent = {
     label: 'Notre entreprise',
     title: 'Réinventer la confiance automobile en Afrique de l’Ouest.',
     introduction:
-      'Le marché automobile évolue, mais l’accès à une information fiable reste un défi. BlodoCar est né au Bénin avec une ambition régionale : rendre chaque étape de la vie d’un véhicule plus transparente, plus simple et plus sûre. Notre point de départ est le Bénin; à long terme, nous voulons étendre progressivement nos solutions au Togo puis aux autres pays de la sous-région.',
+      'Le marché automobile évolue, mais l’accès à une information fiable reste un défi. BlodoCar est né au Bénin avec une ambition régionale : rendre chaque étape de la vie d’un véhicule plus transparente, plus simple et plus sûre. Notre point de départ est le Bénin; à long terme, nous voulons déployer progressivement nos solutions dans l’ensemble de la sous-région ouest-africaine, dont le Togo.',
     mission: {
       title: 'Notre mission',
       text: 'Construire l’infrastructure de confiance automobile de référence en Afrique de l’Ouest.',
@@ -295,7 +295,7 @@ export const siteContent: SiteContent = {
         title: 'Entretenir & réparer',
         description:
           'Prenez soin de votre véhicule avec des professionnels de confiance issus du réseau BlodoCar.',
-        action: { label: 'Trouver un réparateur', href: '/contact' },
+        action: { label: 'Contacter BlodoCar', href: '/contact' },
         points: [
           'Réparateurs certifiés BlodoCar, formés et évalués',
           'Un réseau de proximité, près de chez vous',
@@ -359,7 +359,6 @@ export const siteContent: SiteContent = {
       'Le B-Score est une note sur 100 fondée sur le diagnostic technique, l’historique des réparations, les vérifications administratives (douane, vol, rappels constructeur) et l’historique du véhicule lorsqu’il est disponible.',
     links: [
       { label: 'Accéder à B-Score', href: 'https://bscore-flax.vercel.app/' },
-      { label: 'Télécharger BlodoCar', href: 'https://play.google.com/store' },
       { label: 'Devenir réparateur partenaire', href: '/contact' },
       {
         label: 'Espace concessionnaires et vendeurs',
@@ -376,10 +375,10 @@ export const siteContent: SiteContent = {
       'Réduire les mauvaises surprises : mieux informer pour limiter les défauts cachés et les dépenses imprévues.',
       'Valoriser les bons professionnels : former, évaluer et valoriser les réparateurs qui font la différence.',
       'Digitaliser l’histoire du véhicule : créer un historique fiable et accessible tout au long de sa vie.',
-      'Devenir une référence régionale : partir du Bénin et s’étendre progressivement à la sous-région, notamment au Togo et aux autres pays de l’UEMOA.',
+      'Devenir une référence régionale : partir du Bénin et étendre progressivement BlodoCar à l’ensemble de la sous-région ouest-africaine, dont le Togo et les pays de l’UEMOA.',
     ],
     ambition:
-      'À long terme, partir du Bénin, étendre progressivement BlodoCar au Togo puis aux autres pays de la sous-région, et faire de la confiance un standard de l’automobile en Afrique de l’Ouest.',
+      'À long terme, partir du Bénin et déployer progressivement BlodoCar dans toute la sous-région ouest-africaine, le Togo faisant partie des marchés concernés, afin de faire de la confiance un standard de l’automobile.',
     metrics: [],
   },
   team: {

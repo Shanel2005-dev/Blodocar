@@ -1,7 +1,10 @@
-import { ArrowUpRight, Download, Globe2 } from 'lucide-react'
+import { ArrowUpRight, BadgeCheck, CarFront, Wrench } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { siteContent } from '../../content/siteContent'
 import Reveal from '../ui/Reveal'
 import SectionHeading from '../ui/SectionHeading'
+
+const applicationIcons = [CarFront, Wrench, BadgeCheck]
 
 function PlatformSection() {
   const { platform } = siteContent
@@ -20,31 +23,37 @@ function PlatformSection() {
         aria-hidden="true"
         className="absolute -right-24 -top-24 -z-10 h-[26rem] w-[26rem] rounded-full border border-brand-orange/30"
       />
-      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <Reveal>
-          <SectionHeading
-            description={platform.description}
-            id="platform-title"
-            inverted
-            label={platform.label}
-            title={platform.title}
-          />
-          <div className="mt-9 inline-flex items-center gap-3 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-slate-200">
-            <Globe2
-              aria-hidden="true"
-              className="text-brand-orange"
-              size={20}
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-6xl text-center">
+          <Reveal>
+            <SectionHeading
+              description={platform.description}
+              id="platform-title"
+              inverted
+              label={platform.label}
+              title={platform.title}
+              wide
             />
-            <span>{siteContent.brand.name}</span>
-          </div>
-        </Reveal>
-        <div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {platform.applications.map((application) => (
+          </Reveal>
+        </div>
+
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {platform.applications.map((application, index) => {
+            const Icon = applicationIcons[index] ?? BadgeCheck
+
+            return (
               <Reveal className="h-full" key={application.name}>
-                <article className="h-full rounded-xl border border-white/15 bg-white/[0.06] p-5 text-white">
-                  <h3 className="font-semibold">{application.name}</h3>
-                  <p className="mt-3 text-sm leading-6 text-orange-200">
+                <article className="h-full min-h-64 rounded-xl border border-white/15 bg-white/[0.06] p-6 text-white transition-colors hover:border-brand-orange/60 sm:p-7">
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-orange text-brand-night">
+                      <Icon aria-hidden="true" size={23} />
+                    </span>
+                    <span className="text-sm font-bold text-white/45">
+                      0{index + 1}
+                    </span>
+                  </div>
+                  <h3 className="mt-7 text-xl font-bold">{application.name}</h3>
+                  <p className="mt-3 text-sm font-semibold leading-6 text-brand-orange">
                     {application.audience}
                   </p>
                   <p className="mt-3 text-sm leading-6 text-slate-300">
@@ -52,18 +61,37 @@ function PlatformSection() {
                   </p>
                 </article>
               </Reveal>
-            ))}
-          </div>
-          <p className="mt-6 border-l-2 border-orange-300 pl-4 text-sm leading-6 text-slate-200">
-            {platform.scoreSummary}
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {platform.links.map((link, index) => {
-              const Icon = index === 0 ? Globe2 : Download
-              const className =
-                'inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-orange-300/70 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-300'
+            )
+          })}
+        </div>
 
-              return (
+        <div className="mt-6 grid gap-6 rounded-xl border border-white/15 bg-white/[0.04] p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+          <div>
+            <p className="text-sm font-bold uppercase text-brand-orange">
+              B-Score · note sur 100
+            </p>
+            <p className="mt-3 max-w-4xl text-sm leading-6 text-slate-200 sm:text-base sm:leading-7">
+              {platform.scoreSummary}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3 lg:max-w-sm lg:justify-end">
+            {platform.links.map((link, index) => {
+              const isPrimary = index === 0
+              const className = isPrimary
+                ? 'inline-flex min-h-11 items-center gap-2 rounded-lg bg-brand-orange px-4 py-2 text-sm font-bold text-brand-night transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange'
+                : 'inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand-orange hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange'
+              const content = (
+                <>
+                  {link.label}
+                  <ArrowUpRight aria-hidden="true" size={16} />
+                </>
+              )
+
+              return link.href.startsWith('/') ? (
+                <Link className={className} key={link.label} to={link.href}>
+                  {content}
+                </Link>
+              ) : (
                 <a
                   className={className}
                   href={link.href}
@@ -71,13 +99,7 @@ function PlatformSection() {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  <Icon
-                    aria-hidden="true"
-                    className="text-brand-orange"
-                    size={18}
-                  />
-                  {link.label}
-                  <ArrowUpRight aria-hidden="true" size={16} />
+                  {content}
                 </a>
               )
             })}
