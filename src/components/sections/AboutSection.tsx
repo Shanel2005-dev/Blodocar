@@ -53,22 +53,6 @@ function AboutSection() {
             className="h-full w-full object-cover object-[75%_50%] lg:object-right"
             src={hero.image.src}
           />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 lg:hidden"
-            style={{
-              backgroundImage:
-                'linear-gradient(to bottom, #f8fafc 0%, rgba(248,250,252,0.5) 35%, rgba(248,250,252,0) 100%)',
-            }}
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 hidden lg:block"
-            style={{
-              backgroundImage:
-                'linear-gradient(to right, #f8fafc 0%, rgba(248,250,252,0) 18%)',
-            }}
-          />
         </div>
       </div>
 

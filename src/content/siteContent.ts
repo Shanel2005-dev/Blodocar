@@ -106,6 +106,31 @@ export type SiteContent = {
     }[]
   }
   platform: {
+    hero: {
+      label: string
+      titleLead: string
+      titleAccent: string
+      subtitle: string
+      image: { src: string; alt: string }
+    }
+    intro: { label: string; title: string; description: string }
+    cards: {
+      name: string
+      audience: string
+      points: string[]
+      theme: 'orange' | 'green' | 'blue'
+      phoneImage: string
+      phoneAlt: string
+      action: SiteLink
+    }[]
+    banner: {
+      scoreTitle: string
+      scoreText: string
+      scoreCta: SiteLink
+      partnerTitle: string
+      partnerText: string
+      partnerCta: SiteLink
+    }
     label: string
     title: string
     description: string
@@ -404,6 +429,79 @@ export const siteContent: SiteContent = {
     ],
   },
   platform: {
+    hero: {
+      label: 'Plateforme et applications',
+      titleLead: '3 applications pour',
+      titleAccent: 'une même vision.',
+      subtitle:
+        'Des outils simples et puissants pour vous accompagner à chaque étape de la vie de votre véhicule.',
+      image: {
+        src: '/platform-user.jpeg',
+        alt: 'Une personne utilise une application sur son téléphone.',
+      },
+    },
+    intro: {
+      label: 'Nos applications',
+      title: 'Trois applications, trois univers complémentaires.',
+      description:
+        'Chaque application répond à un besoin précis, tout en s’intégrant dans un écosystème unique.',
+    },
+    cards: [
+      {
+        name: 'BlodoCar',
+        audience: 'Pour les propriétaires, concessionnaires et entreprises à flottes.',
+        points: [
+          'Suivre ses véhicules',
+          'Demander des devis',
+          'Trouver un réparateur',
+        ],
+        theme: 'orange',
+        phoneImage: '/app-blodocar.png',
+        phoneAlt: 'Écran de l’application BlodoCar : mon véhicule, devis, réparateurs et marketplace.',
+        action: { label: 'En savoir plus', href: '/services' },
+      },
+      {
+        name: 'B-Garage',
+        audience: 'Pour les réparateurs BlodoCar et garages partenaires.',
+        points: [
+          'Recevoir des missions',
+          'Réaliser des diagnostics',
+          'Faire évoluer leur niveau',
+        ],
+        theme: 'green',
+        phoneImage: '/app-bgarage.png',
+        phoneAlt: 'Écran de l’application B-Garage : missions, diagnostics et interventions.',
+        action: { label: 'En savoir plus', href: '/contact' },
+      },
+      {
+        name: 'B-Score',
+        audience: 'Pour les acheteurs, concessionnaires et partenaires.',
+        points: [
+          'Consulter les scores',
+          'Commander un diagnostic',
+          'Accéder à BlodoCar Market',
+        ],
+        theme: 'blue',
+        phoneImage: '/app-bscore.png',
+        phoneAlt: 'Écran de l’application B-Score : score du véhicule, historique et rapport.',
+        action: {
+          label: 'En savoir plus',
+          href: 'https://bscore-flax.vercel.app/',
+        },
+      },
+    ],
+    banner: {
+      scoreTitle: 'Essayez le B-Score',
+      scoreText:
+        'Consultez les scores et commandez un diagnostic en ligne.',
+      scoreCta: {
+        label: 'Accéder à B-Score',
+        href: 'https://bscore-flax.vercel.app/',
+      },
+      partnerTitle: 'Devenez partenaire',
+      partnerText: 'Rejoignez notre réseau de professionnels.',
+      partnerCta: { label: 'Devenir partenaire', href: '/contact' },
+    },
     label: 'Plateforme et applications',
     title: 'Un outil pour chaque acteur automobile',
     description:
