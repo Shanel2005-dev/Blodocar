@@ -143,6 +143,25 @@ export type SiteContent = {
     links: SiteLink[]
   }
   objectives: {
+    hero: {
+      label: string
+      titleLead: string
+      titleAccent: string
+      subtitle: string
+      image: { src: string; alt: string }
+    }
+    cards: {
+      title: string
+      text: string
+      image: string
+      imageAlt: string
+    }[]
+    ambitionCard: {
+      label: string
+      title: string
+      accent: string
+      tagline: string
+    }
     label: string
     title: string
     introduction: string
@@ -538,6 +557,55 @@ export const siteContent: SiteContent = {
     ],
   },
   objectives: {
+    hero: {
+      label: 'Nos objectifs',
+      titleLead: 'Des objectifs clairs pour',
+      titleAccent: 'un impact réel.',
+      subtitle:
+        'Chez BlodoCar, nous agissons pour une mobilité plus sûre, plus transparente et plus accessible en Afrique de l’Ouest.',
+      image: {
+        src: '/objectives-hero.jpg',
+        alt: 'Une cliente souriante tient son téléphone devant un showroom automobile.',
+      },
+    },
+    cards: [
+      {
+        title: 'Restaurer la confiance',
+        text: 'Rendre l’achat et la vente de véhicules d’occasion plus transparents grâce à des informations fiables.',
+        image: '/objectif-1.jpg',
+        imageAlt: 'Une poignée de main devant des voitures.',
+      },
+      {
+        title: 'Réduire les mauvaises surprises',
+        text: 'Mieux informer les automobilistes pour limiter les défauts cachés et les dépenses imprévues.',
+        image: '/objectif-2.jpg',
+        imageAlt: 'Une conductrice souriante au volant de sa voiture.',
+      },
+      {
+        title: 'Valoriser les bons professionnels',
+        text: 'Former, évaluer et accompagner les réparateurs qui font la différence.',
+        image: '/objectif-3.jpg',
+        imageAlt: 'Un mécanicien contrôle un moteur dans un atelier.',
+      },
+      {
+        title: 'Digitaliser l’histoire du véhicule',
+        text: 'Construire un historique fiable et accessible tout au long de la vie du véhicule.',
+        image: '/objectif-4.jpg',
+        imageAlt: 'Une main tient un téléphone affichant l’historique d’un véhicule.',
+      },
+      {
+        title: 'Devenir une référence régionale',
+        text: 'Commencer au Bénin, puis étendre progressivement BlodoCar au Togo et aux autres pays de l’UEMOA.',
+        image: '/objectif-5.jpg',
+        imageAlt: 'Carte de l’Afrique de l’Ouest avec le Bénin et le Togo mis en évidence.',
+      },
+    ],
+    ambitionCard: {
+      label: 'Notre ambition',
+      title: 'Faire de la confiance un standard de l’automobile',
+      accent: 'en Afrique de l’Ouest.',
+      tagline: 'Plus de transparence. Plus de mobilité. Un meilleur avenir.',
+    },
     label: 'Nos objectifs',
     title: 'Construire un marché automobile plus transparent et plus fiable.',
     introduction: 'Les priorités de BlodoCar pour faire évoluer le marché.',
