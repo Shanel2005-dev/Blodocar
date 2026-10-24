@@ -9,7 +9,7 @@ type ButtonProps = Omit<LinkProps, 'to'> & {
 
 const variantClasses = {
   primary:
-    'bg-brand-orange text-brand-night hover:bg-brand-blue hover:text-white focus-visible:outline-brand-orange',
+    'bg-[#D9500F] text-white hover:bg-brand-blue focus-visible:outline-brand-orange',
   secondary:
     'border border-white/30 bg-white/5 text-white hover:border-white/60 hover:bg-white/10 focus-visible:outline-orange-300',
 }

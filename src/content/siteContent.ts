@@ -59,6 +59,22 @@ export type SiteContent = {
     secondaryCta: SiteLink
   }
   about: {
+    hero: {
+      label: string
+      titleLead: string
+      titleAccent: string
+      subtitle: string
+      image: { src: string; alt: string }
+    }
+    pillars: { label: string; title: string; text: string }[]
+    ecosystemCard: {
+      label: string
+      title: string
+      description: string
+      image: string
+      href: string
+    }
+    banner: { title: string; accent: string }
     label: string
     title: string
     introduction: string
@@ -203,6 +219,43 @@ export const siteContent: SiteContent = {
     },
   },
   about: {
+    hero: {
+      label: 'À propos',
+      titleLead: 'Plus qu’une plateforme,',
+      titleAccent: 'une vision pour l’Afrique de l’Ouest.',
+      subtitle:
+        'BlodoCar est né d’une ambition simple : rendre chaque étape de la vie de votre véhicule plus transparente, plus simple et plus sûre.',
+      image: {
+        src: '/about-image.jpeg',
+        alt: 'Un mécanicien BlodoCar tient une clé dans son atelier.',
+      },
+    },
+    pillars: [
+      {
+        label: 'Notre vision',
+        title:
+          'Construire une infrastructure de confiance automobile en Afrique de l’Ouest.',
+        text: 'Faire de BlodoCar la référence en matière de transparence, de fiabilité et d’accessibilité pour tous les acteurs de l’écosystème automobile.',
+      },
+      {
+        label: 'Notre mission',
+        title:
+          'Simplifier la vie des automobilistes et valoriser toute la chaîne de valeur.',
+        text: 'Grâce à des solutions innovantes et fiables, nous connectons les particuliers et les professionnels autour d’un même objectif : une mobilité plus sûre et plus accessible.',
+      },
+    ],
+    ecosystemCard: {
+      label: 'Notre écosystème',
+      title: 'Des solutions complètes pour vos véhicules.',
+      description:
+        'B-Score, B-Garage, historique véhicule et BlodoCar Market.',
+      image: '/cars-card.jpg',
+      href: '/plateforme',
+    },
+    banner: {
+      title: 'Ensemble, construisons une mobilité',
+      accent: 'plus transparente et plus sûre en Afrique de l’Ouest.',
+    },
     label: 'Notre entreprise',
     title: 'Réinventer la confiance automobile en Afrique de l’Ouest.',
     introduction:
@@ -240,10 +293,22 @@ export const siteContent: SiteContent = {
     values: {
       title: 'Nos valeurs',
       items: [
-        { title: 'Transparence', description: '' },
-        { title: 'Fiabilité', description: '' },
-        { title: 'Mérite', description: '' },
-        { title: 'Proximité', description: '' },
+        {
+          title: 'Transparence',
+          description: 'Des informations claires et vérifiées.',
+        },
+        {
+          title: 'Fiabilité',
+          description: 'Des solutions sur lesquelles vous pouvez compter.',
+        },
+        {
+          title: 'Mérite',
+          description: 'La qualité de service avant tout.',
+        },
+        {
+          title: 'Proximité',
+          description: 'Toujours plus près de vous.',
+        },
       ],
     },
   },

@@ -39,7 +39,7 @@ function Footer() {
             </p>
           </div>
           <Link
-            className="inline-flex min-h-14 items-center justify-between gap-5 rounded-lg bg-brand-orange px-5 py-3 font-bold text-brand-night transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange"
+            className="inline-flex min-h-14 items-center justify-between gap-5 rounded-lg bg-[#D9500F] px-5 py-3 font-bold text-white transition hover:bg-white hover:text-brand-night focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange"
             to={footer.calloutCta.href}
           >
             {footer.calloutCta.label}
