@@ -10,7 +10,11 @@ const cardStyles = [
   { Icon: Leaf, number: 'bg-[#0C7829]', icon: 'text-[#0C7829]' },
 ]
 
-const fallbackStyle = cardStyles[0]
+const fallbackStyle = {
+  Icon: ShieldCheck,
+  number: 'bg-brand-orange',
+  icon: 'text-brand-orange',
+}
 
 function ObjectivesSection() {
   const { objectives, brand } = siteContent
@@ -70,8 +74,7 @@ function ObjectivesSection() {
         {/* 2. Les cinq objectifs */}
         <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {cards.map((card, index) => {
-            const { Icon, number, icon } =
-              cardStyles[index] ?? fallbackStyle
+            const { Icon, number, icon } = cardStyles[index] ?? fallbackStyle
 
             return (
               <Reveal className="h-full" key={card.title}>
