@@ -51,15 +51,15 @@ function Footer() {
           <div>
             <Link
               aria-label={brand.name}
-              className="inline-flex rounded bg-white p-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-300"
+              className="inline-flex rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-300"
               to={brand.homeHref}
             >
               <img
                 alt={brand.logoAlt}
-                className="h-10 w-auto"
-                height={127}
-                src={brand.logoSrc}
-                width={259}
+                className="h-14 w-auto"
+                height={378}
+                src={brand.logoLightSrc}
+                width={900}
               />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-7 text-slate-300">

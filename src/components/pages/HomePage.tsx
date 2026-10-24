@@ -1,10 +1,13 @@
 import {
+  Award,
   ArrowRight,
   ArrowUpRight,
   CarFront,
   ClipboardCheck,
+  Eye,
   FileText,
   Handshake,
+  MapPin,
   ShieldCheck,
   Wrench,
 } from 'lucide-react'
@@ -15,6 +18,7 @@ import Button from '../ui/Button'
 import SectionHeading from '../ui/SectionHeading'
 
 const activityIcons = [ShieldCheck, Wrench, ClipboardCheck, CarFront, Handshake]
+const valueIcons = [Eye, ShieldCheck, Award, MapPin]
 
 function HomePage() {
   const { activities, about, contact, journey } = siteContent
@@ -34,7 +38,7 @@ function HomePage() {
           <ol className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
             {journey.stages.map((stage, index) => (
               <li
-                className="min-h-72 rounded-xl border border-brand-border border-t-4 border-t-brand-orange bg-slate-50 p-7 sm:p-8"
+                className="min-h-72 rounded-xl border border-t-4 border-brand-border border-t-brand-orange bg-slate-50 p-7 sm:p-8"
                 key={stage.title}
               >
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-orange/10 text-xl font-extrabold text-brand-blue">
@@ -204,42 +208,46 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white px-5 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand-blue">
-              {about.label}
-            </p>
-            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-brand-night sm:text-4xl">
-              {about.title}
-            </h2>
-            <p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">
-              {about.introduction}
-            </p>
-            <Link
-              className="mt-7 inline-flex items-center gap-2 font-semibold text-brand-blue transition hover:text-brand-night focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-blue"
-              to="/a-propos"
-            >
+      <section className="bg-slate-50 px-5 py-20 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center">
+            <SectionHeading
+              description={about.introduction}
+              id="home-about-title"
+              label={about.label}
+              title={about.title}
+              wide
+            />
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {about.values.items.map((value, index) => {
+              const Icon = valueIcons[index] ?? ShieldCheck
+
+              return (
+                <article
+                  className="flex min-h-44 flex-col justify-between rounded-xl border border-brand-border bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-orange/60 hover:shadow-lg"
+                  key={value.title}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-bold text-brand-blue">
+                      0{index + 1}
+                    </span>
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brand-orange/10 text-brand-blue">
+                      <Icon aria-hidden="true" size={21} />
+                    </span>
+                  </div>
+                  <h3 className="mt-8 text-xl font-bold text-brand-night">
+                    {value.title}
+                  </h3>
+                </article>
+              )
+            })}
+          </div>
+          <div className="mt-8 flex justify-center">
+            <Button className="px-6 py-3" to="/a-propos">
               En savoir plus sur BlodoCar
               <ArrowUpRight aria-hidden="true" size={18} />
-            </Link>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {about.values.items.map((value) => (
-              <article
-                className="rounded-2xl border border-slate-200 bg-slate-50 p-6"
-                key={value.title}
-              >
-                <h3 className="text-lg font-bold text-brand-night">
-                  {value.title}
-                </h3>
-                {value.description && (
-                  <p className="mt-3 text-sm leading-6 text-slate-600">
-                    {value.description}
-                  </p>
-                )}
-              </article>
-            ))}
+            </Button>
           </div>
         </div>
       </section>

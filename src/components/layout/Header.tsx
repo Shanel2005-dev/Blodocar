@@ -29,10 +29,10 @@ function Header() {
           >
             <img
               alt={brand.logoAlt}
-              className="h-11 w-auto"
-              height={127}
+              className="h-12 w-auto"
+              height={378}
               src={brand.logoSrc}
-              width={259}
+              width={900}
             />
           </Link>
 

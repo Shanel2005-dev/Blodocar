@@ -1,5 +1,11 @@
-const blodocarLogo = new URL('../assets/image/Capturess.PNG', import.meta.url)
-  .href
+const logoHeader = new URL(
+  '../assets/image/BlodoCar_logo_transparent.png',
+  import.meta.url,
+).href
+const logoFooter = new URL(
+  '../assets/image/BlodoCar_logo_uniforme_blanc.png',
+  import.meta.url,
+).href
 const termsDocument = new URL(
   "../assets/image/Conditions Générales d'Utilisation – BlodoCar.docx.pdf",
   import.meta.url,
@@ -29,6 +35,7 @@ export type SiteContent = {
     tagline: string
     homeHref: string
     logoSrc: string
+    logoLightSrc: string
     logoAlt: string
   }
   header: {
@@ -160,7 +167,8 @@ export const siteContent: SiteContent = {
     name: 'BlodoCar',
     tagline: 'Roulez en toute sérénité.',
     homeHref: '/',
-    logoSrc: blodocarLogo,
+    logoSrc: logoHeader,
+    logoLightSrc: logoFooter,
     logoAlt: 'BlodoCar',
   },
   header: {
